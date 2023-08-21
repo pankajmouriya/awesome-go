@@ -5,3 +5,9 @@ name = "go"
 
   [analyzers.meta]
   import_root = "github.com/pankajmouriya/awesome-go"
+
+[[transformers]]
+name = "gofumpt"
+
+[[transformers]]
+name = "gofmt"
