@@ -7,7 +7,7 @@ name = "go"
   import_root = "github.com/pankajmouriya/awesome-go"
 
 [[transformers]]
-name = "gofumpt"
+name = "gofmt"
 
 [[transformers]]
-name = "gofmt"
+name = "gofumpt"
