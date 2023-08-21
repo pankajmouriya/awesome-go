@@ -27,28 +27,36 @@ const issueTemplateContent = `
 var issueTemplate = template.Must(template.New("issue").Parse(issueTemplateContent))
 
 // FIXME: use official github client
-var reGithubRepo = regexp.MustCompile("https://github.com/[a-zA-Z0-9-._]+/[a-zA-Z0-9-._]+$")
-var githubGETREPO = "https://api.github.com/repos%s"
-var githubGETCOMMITS = "https://api.github.com/repos%s/commits"
-var githubPOSTISSUES = "https://api.github.com/repos/avelino/awesome-go/issues"
+var (
+	reGithubRepo     = regexp.MustCompile("https://github.com/[a-zA-Z0-9-._]+/[a-zA-Z0-9-._]+$")
+	githubGETREPO    = "https://api.github.com/repos%s"
+	githubGETCOMMITS = "https://api.github.com/repos%s/commits"
+	githubPOSTISSUES = "https://api.github.com/repos/avelino/awesome-go/issues"
+)
 
 // FIXME: use https
-var awesomeGoGETISSUES = "http://api.github.com/repos/avelino/awesome-go/issues" //only returns open issues
-// FIXME: variable has type Duration, but contains a number. we should use
-//
-//	time.Hour * ... or change type of variable
-var numberOfYears time.Duration = 1
-var timeNow = time.Now()
-var issueTitle = fmt.Sprintf("Investigate repositories with more than 1 year without update - %s", timeNow.Format("2006-01-02"))
+var (
+	awesomeGoGETISSUES = "http://api.github.com/repos/avelino/awesome-go/issues" // only returns open issues
+	// FIXME: variable has type Duration, but contains a number. we should use
+	//
+	//	time.Hour * ... or change type of variable
+	numberOfYears time.Duration = 1
+	timeNow                     = time.Now()
+	issueTitle                  = fmt.Sprintf("Investigate repositories with more than 1 year without update - %s", timeNow.Format("2006-01-02"))
+)
 
-const deadLinkMessage = " this repository might no longer exist! (status code >= 400 returned)"
-const movedPermanently = " status code 301 received"
-const status302 = " status code 302 received"
-const archived = " repository has been archived"
+const (
+	deadLinkMessage  = " this repository might no longer exist! (status code >= 400 returned)"
+	movedPermanently = " status code 301 received"
+	status302        = " status code 302 received"
+	archived         = " repository has been archived"
+)
 
 // LIMIT specifies the max number of repositories that are added in a single run of the script
-var LIMIT = 10
-var ctr = 0
+var (
+	LIMIT = 10
+	ctr   = 0
+)
 
 type tokenSource struct {
 	AccessToken string
