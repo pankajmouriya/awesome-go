@@ -2,12 +2,13 @@ package main
 
 import (
 	"bytes"
-	"github.com/avelino/awesome-go/pkg/markdown"
 	"os"
 	"regexp"
 	"sort"
 	"strings"
 	"testing"
+
+	"github.com/avelino/awesome-go/pkg/markdown"
 
 	"github.com/PuerkitoBio/goquery"
 )
