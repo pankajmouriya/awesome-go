@@ -5,13 +5,14 @@ import (
 	"bytes"
 	"errors"
 	"fmt"
-	"github.com/avelino/awesome-go/pkg/markdown"
-	cp "github.com/otiai10/copy"
 	template2 "html/template"
 	"net/url"
 	"os"
 	"path/filepath"
 	"text/template"
+
+	"github.com/avelino/awesome-go/pkg/markdown"
+	cp "github.com/otiai10/copy"
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/avelino/awesome-go/pkg/slug"
@@ -43,15 +44,19 @@ var staticFiles = []string{
 
 // TODO: embed
 // Templates
-var tplIndex = template.Must(template.ParseFiles("tmpl/index.tmpl.html"))
-var tplCategoryIndex = template.Must(template.ParseFiles("tmpl/category-index.tmpl.html"))
-var tplSitemap = template.Must(template.ParseFiles("tmpl/sitemap.tmpl.xml"))
+var (
+	tplIndex         = template.Must(template.ParseFiles("tmpl/index.tmpl.html"))
+	tplCategoryIndex = template.Must(template.ParseFiles("tmpl/category-index.tmpl.html"))
+	tplSitemap       = template.Must(template.ParseFiles("tmpl/sitemap.tmpl.xml"))
+)
 
 // Output files
 const outDir = "out/" // NOTE: trailing slash is required
 
-var outIndexFile = filepath.Join(outDir, "index.html")
-var outSitemapFile = filepath.Join(outDir, "sitemap.xml")
+var (
+	outIndexFile   = filepath.Join(outDir, "index.html")
+	outSitemapFile = filepath.Join(outDir, "sitemap.xml")
+)
 
 func main() {
 	if err := buildStaticSite(); err != nil {
